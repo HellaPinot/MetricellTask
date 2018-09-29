@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class LogDataAdapter extends RecyclerView.Adapter<LogDataAdapter.ViewHolder>{
 
     /*
-    Adapter for recycler view. Relays the five most recent entries from database to the database as mCallback is called.
+    Adapter for recycler view. Relays the five most recent entries from database to the recylerview as mCallback is called.
      */
 
     private static final String TAG = "LogDataAdapter";

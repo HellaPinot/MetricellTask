@@ -42,16 +42,17 @@ public class PhoneStateMain extends PhoneStateListener implements LocationListen
     private String mSignalStrength;
     private Handler mHandler;
     private int mInterval;
-    private LogDataAdapter logDataAdapter;
+    private Initialise initialise;
+
 
 
     //Constructor
-    public PhoneStateMain(Context context, LogDataAdapter logDataAdapter) {
+    public PhoneStateMain(Context context, Initialise initialise) {
         mTelMgr = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         mLocMgr = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
 
-        this.logDataAdapter = logDataAdapter;
+        this.initialise = initialise;
         this.context = context;
         mInterval = 2500;
         mServiceState = 0;
@@ -67,7 +68,7 @@ public class PhoneStateMain extends PhoneStateListener implements LocationListen
         public void run() {
             try {
                 listen();
-                MainActivity.mCallBack(getLocation());
+                initialise.mCallBack(getLocation());
             } finally {
                 stopListen();
                 mHandler.postDelayed(statusChecker, mInterval);
