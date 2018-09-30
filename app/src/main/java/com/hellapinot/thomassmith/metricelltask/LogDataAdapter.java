@@ -35,8 +35,8 @@ public class LogDataAdapter extends RecyclerView.Adapter<LogDataAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull LogDataAdapter.ViewHolder holder, int position) {
+        //Call to database for values to populate RecyclerView
         Cursor data = dbh.getLogData(dbh.getLastRowLogData()-position);
-
         if( data != null && data.moveToFirst() ){
             holder.signalStrength.setText(data.getString(1));
             holder.serviceState.setText(data.getString(2));

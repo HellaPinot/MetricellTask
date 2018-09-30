@@ -63,6 +63,7 @@ public class PhoneStateMain extends PhoneStateListener implements LocationListen
     }
 
     //Handler, checks for updated values every 2.5 seconds and calls mCallBack
+    //Calls 'listen' each time to force more frequent updates from listener classes
     Runnable statusChecker = new Runnable() {
         @Override
         public void run() {

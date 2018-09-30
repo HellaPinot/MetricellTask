@@ -50,6 +50,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    //Adds new entry to database file
     public void addLogEntry(String signalStrength, String serviceState, String location){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "INSERT INTO " + DataContract.TABLE_NAME + "(" +
@@ -62,6 +63,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
+    //Returns ID of the last row in database, indicates size of database.
     public int getLastRowLogData(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT * FROM " + DataContract.TABLE_NAME, null);
@@ -72,6 +74,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
+    //Returns row of data relative to the request ID
     public Cursor getLogData(int row){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + DataContract.TABLE_NAME + " WHERE " + DataContract.Columns._ID + " = " + row + ";";

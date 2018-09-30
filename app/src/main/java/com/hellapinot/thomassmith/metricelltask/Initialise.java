@@ -11,6 +11,11 @@ import android.widget.TextView;
 
 public class Initialise {
 
+    /*
+    Initialise acts as presenter and intermediary between model and view.
+    Handles callbacks from PhoneStateMain.
+    */
+
     private Context context;
     private LogDataAdapter logDataAdapter;
     public PhoneStateMain phoneStateMain;
@@ -54,6 +59,7 @@ public class Initialise {
 //        Log.d(TAG, "mCallBack: called");
         String tempLocation;
 
+        //Check if location is null (is GPS on)
         if (location != null) {
             tempLocation = "Long: " + location.getLongitude() + " / Lat: " + location.getLatitude();
             DataBaseHelper.getInstance(context).addLogEntry(phoneStateMain.getSignalStrength(), phoneStateMain.getServiceState(), "Lo:" + location.getLongitude() + "\n La:" + location.getLatitude());
@@ -62,6 +68,7 @@ public class Initialise {
             DataBaseHelper.getInstance(context).addLogEntry(phoneStateMain.getSignalStrength(), phoneStateMain.getServiceState(), tempLocation);
         }
 
+        //Checks if the UI is paused, in which case only the log is updated
         if(!MainActivity.paused){
             serviceState.setText(phoneStateMain.getServiceState());
             signalStrength.setText(phoneStateMain.getSignalStrength());

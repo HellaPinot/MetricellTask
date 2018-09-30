@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPostResume();
     }
 
-    //Waits for user to grant all permissions before continuation of app functionality.
+    //Waits for user to grant all permissions before initialising.
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         permissionManager.checkResult(requestCode, permissions, grantResults);
