@@ -51,6 +51,7 @@ public class Initialise {
                 locationState.setText(setLocation);
             }
             phoneStateMain.startSignalChecker();
+            phoneStateMain.getWifiList();
 
         }
     }

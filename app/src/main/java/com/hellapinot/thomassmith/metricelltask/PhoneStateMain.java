@@ -6,6 +6,9 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
@@ -90,6 +93,17 @@ public class PhoneStateMain extends PhoneStateListener implements LocationListen
 
     public void stopListen() {
         mTelMgr.listen(this, PhoneStateListener.LISTEN_NONE);
+    }
+
+
+    //Wifi check methods
+    public void getWifiList(){
+        WifiManager wifiMgr = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        List<ScanResult> list = wifiMgr.getScanResults();
+        for( ScanResult wifi : list){
+            Log.d(TAG, "getWifiList: SSID:" + wifi.SSID + " dBm:" +  wifi.level);
+        }
+
     }
 
 
